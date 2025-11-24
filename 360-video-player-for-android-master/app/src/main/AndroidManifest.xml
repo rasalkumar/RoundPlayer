@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.oculus.sample">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -27,6 +27,7 @@
         </activity>
         <activity
             android:name=".Main3Activity"
+            android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,10 +36,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".Main2Activity"></activity>
-        <activity android:name=".MainActivity">
-
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
             android:alwaysRetainTaskState="true"
-            android:configChanges="orientation|screenSize"
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -89,7 +91,9 @@
 
         </activity>
         <activity android:name=".NotificationCloser" android:taskAffinity="" android:excludeFromRecents="true" android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
-        <receiver android:name=".MediaButtonIntentReceiver">
+        <receiver
+            android:name=".MediaButtonIntentReceiver"
+            android:exported="true">
             <intent-filter android:priority="100000">
                 <action android:name="android.intent.action.MEDIA_BUTTON" />
             </intent-filter>

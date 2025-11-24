@@ -45,8 +45,8 @@ public class SphericalSceneRenderer {
 
     public SphericalSceneRenderer(Context context) {
         shaderProgram = new ShaderProgram(
-                SphericalPlayerActivity.readRawTextFile(context, R.raw.video_vertex_shader),
-                SphericalPlayerActivity.readRawTextFile(context, R.raw.video_fragment_shader));
+                SphericalPlayerActivity.Companion.readRawTextFile(context, R.raw.video_vertex_shader),
+                SphericalPlayerActivity.Companion.readRawTextFile(context, R.raw.video_fragment_shader));
 
         aPositionLocation = shaderProgram.getAttribute("aPosition");
         uMVPMatrixLocation = shaderProgram.getUniform("uMVPMatrix");

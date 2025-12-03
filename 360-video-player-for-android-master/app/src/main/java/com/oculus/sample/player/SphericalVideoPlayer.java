@@ -26,7 +26,7 @@ import android.opengl.Matrix;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -41,9 +41,8 @@ import android.view.View;
 import android.widget.MediaController;
 import android.widget.ProgressBar;
 
-import static com.oculus.sample.SphericalPlayerActivity.toast;
-
 import com.oculus.sample.R;
+import com.oculus.sample.SphericalPlayerActivity;
 import com.oculus.sample.gles.EGLRenderTarget;
 import com.oculus.sample.gles.GLHelpers;
 import com.oculus.sample.gles.SphericalSceneRenderer;
@@ -156,13 +155,13 @@ public class SphericalVideoPlayer extends TextureView {
             videoPlayerInternal.setDataSource(getContext(), Uri.parse(videoPath), null);
             videoPlayerInternal.setLooping(true);
 
-            toast(getContext(), "Preparing video...");
+            SphericalPlayerActivity.Companion.toast(getContext(), "Preparing video...");
 
             videoPlayerInternal.setOnPreparedListener(
                     new MediaPlayer.OnPreparedListener() {
                         @Override
                         public void onPrepared(MediaPlayer mp) {
-                            toast(getContext(), "Prepared video");
+                            SphericalPlayerActivity.Companion.toast(getContext(), "Prepared video");
                             play();
                         }
                     });
@@ -170,7 +169,7 @@ public class SphericalVideoPlayer extends TextureView {
                     new MediaPlayer.OnBufferingUpdateListener() {
                         @Override
                         public void onBufferingUpdate(MediaPlayer mp, int percent) {
-                            toast(getContext(), "Buffered video" + percent + "%");
+                            SphericalPlayerActivity.Companion.toast(getContext(), "Buffered video" + percent + "%");
 
                         }
                     });
@@ -179,7 +178,7 @@ public class SphericalVideoPlayer extends TextureView {
             videoPlayerInternal.prepareAsync();
         } catch (IOException e) {
             Log.e(TAG, e.toString(), e);
-            toast(getContext(), e.toString());
+            SphericalPlayerActivity.Companion.toast(getContext(), e.toString());
         }
     }
 

@@ -2,6 +2,7 @@ package com.oculus.sample;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,7 +10,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.preference.PreferenceManager;
-import android.support.v4.app.NotificationCompat;
+import androidx.core.app.NotificationCompat;
 import android.util.Log;
 import android.webkit.ValueCallback;
 import android.webkit.WebView;
@@ -68,12 +69,13 @@ public class BackgroundPlayHelper {
         }
     }
 
+    @SuppressLint("MissingPermission")
     public void showBackgroundPlaybackNotification() {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                 .setSmallIcon(R.drawable.ic_headphones_white_24dp)
                 .setOngoing(true)
                 .setColor(Color.parseColor("#E62118"))
-                .addAction(R.drawable.ic_pause_grey600_24dp, "PAUSE", NotificationCloser.getDismissIntent(NOTIFICATION_ID, context))
+                .addAction(R.drawable.ic_pause_grey600_24dp, "PAUSE", NotificationCloser.Companion.getDismissIntent(NOTIFICATION_ID, context))
                 .setContentTitle(context.getString(R.string.app_name))
                 .setContentText(webView.getTitle().replace(" - YouTube", ""))
                 .setAutoCancel(true)

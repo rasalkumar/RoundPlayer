@@ -46,14 +46,6 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_tor"
-        android:checkable="true"
-        android:checked="false"
-        android:title="@string/enableTor"
-        android:enabled="false"
-        app:showAsAction="never" />
-
-    <item
         android:id="@+id/action_download"
         android:title="@string/download"
         app:showAsAction="never" />
